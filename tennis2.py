@@ -13,6 +13,8 @@ class TennisGame2:
         else:
             self.receiverScore += 1
 
+# este codigo esta fatal hay que simplificarlo y agregar varias funciones 
+
     def score(self):
         result = Deuce(
             self, GameServer(
@@ -21,6 +23,8 @@ class TennisGame2:
                         self, AdvantageReceiver(
                             self, DefaultResult(self)))))).getResult()
         return result.format()
+
+# agregamos las funciones duplicadas en una sola para simplificar el codigo 
 
     def receiverHasAdvantage(self):
         return self.receiverScore >= 4 and (self.receiverScore - self.serverScore) == 1
@@ -38,6 +42,7 @@ class TennisGame2:
         return self.serverScore >= 3 and self.receiverScore >= 3 and (self.serverScore == self.receiverScore)
 
 #quizas inutil
+# se puede simplificar y hay codigo muertto
 class TennisResult:
     def __init__(self, serverScore, receiverScore):
         self.serverScore = serverScore
@@ -93,6 +98,8 @@ class AdvantageServer:
         if (self.game.serverHasAdvantage()):
             return TennisResult("Advantage " + self.game.server, "")
         return self.nextResult.getResult()
+    
+    # fin 
 
 
 class AdvantageReceiver:
